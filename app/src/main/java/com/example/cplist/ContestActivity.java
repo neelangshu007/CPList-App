@@ -2,7 +2,9 @@ package com.example.cplist;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -18,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,9 @@ public class ContestActivity extends AppCompatActivity implements LoaderManager.
 
     private static final int CONTEST_LOADER_ID = 1;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    View loadingIndicator ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +68,9 @@ public class ContestActivity extends AppCompatActivity implements LoaderManager.
         mEmptyStateTextView = findViewById(R.id.empty_view);
         contestListView.setEmptyView(mEmptyStateTextView);
 
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        loadingIndicator = findViewById(R.id.loading_indicator);
 
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -71,11 +78,32 @@ public class ContestActivity extends AppCompatActivity implements LoaderManager.
 
             loaderManager.initLoader(CONTEST_LOADER_ID, null, this);
         }else{
-            View loadingIndicator = findViewById(R.id.loading_indicator);
-            loadingIndicator.setVisibility(View.GONE);
 
+            loadingIndicator.setVisibility(View.GONE);
             mEmptyStateTextView.setText("No Internet Connection");
         }
+
+        swipeRefreshLayout = findViewById(R.id.swipeLayout);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if(networkInfo != null && networkInfo.isConnected()){
+                    LoaderManager loaderManager = getLoaderManager();
+
+                    loaderManager.initLoader(CONTEST_LOADER_ID, null, ContestActivity.this);
+                }else{
+                    View loadingIndicator = findViewById(R.id.loading_indicator);
+                    loadingIndicator.setVisibility(View.GONE);
+
+                    mEmptyStateTextView.setText("No Internet Connection");
+
+                    Toast.makeText(ContestActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         contestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
