@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CPList</string>
+    <string name="app_name">CP List</string>
 
     <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
     <string name="settings_menu_item">Settings</string>

@@ -22,11 +22,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity"
-            android:label="@string/settings_title">
+            android:label="@string/settings_title"
+            android:theme="@style/settingActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ContestActivity">
             </meta-data>
+
         </activity>
     </application>
 

@@ -3,7 +3,7 @@
     <style name="Theme.CPList" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">#03AAA9</item>
+        <item name="colorPrimaryVariant">#25BFB0</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="settingActivity" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:statusBarColor">#25BFB0</item>
+    </style>
+
 </resources>
