@@ -14,7 +14,11 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -39,29 +43,38 @@ public class ContestAdapter extends ArrayAdapter<Contest> {
         TextView eventTextView = listItemView.findViewById(R.id.event);
         eventTextView.setText(currentContest.getEvent());
 
+        ZoneId zone = ZoneId.of("Asia/Kolkata");
+        String startTimeString = currentContest.getStartTime();
+        ZonedDateTime startDateTime = Instant.parse(startTimeString).atZone(zone);
+        LocalTime startTime = startDateTime.toLocalTime();
+
+        String endTimeString = currentContest.getEndTime();
+        ZonedDateTime endDateTime = Instant.parse(endTimeString).atZone(zone);
+        LocalTime endTime = endDateTime.toLocalTime();
+
         TextView startTimeTextView = listItemView.findViewById(R.id.startTime);
         LocalDate startDate = LocalDate.parse(currentContest.getStartTime(), DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         DateTimeFormatter startFormatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         String startFormattedString = startDate.format(startFormatter);
-        startTimeTextView.setText("Start Date:- " + startFormattedString);
+        startTimeTextView.setText("Start Date: " + startFormattedString + " at " + startTime);
 
 
         TextView endTimeTextView = listItemView.findViewById(R.id.endTime);
         LocalDate endDate = LocalDate.parse(currentContest.getEndTime(), DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         String endFormattedString = endDate.format(formatter);
-        endTimeTextView.setText("End Date:- " + endFormattedString);
+        endTimeTextView.setText("End Date: " + endFormattedString + " at " + endTime);
 
 
         TextView durationTextView = listItemView.findViewById(R.id.duration);
         Double eventDuration = Double.parseDouble(currentContest.getDuration());
         if(eventDuration < 86400){
             eventDuration = eventDuration/3600;
-            durationTextView.setText("Duration:- " + String.valueOf(eventDuration) + " Hours");
+            durationTextView.setText("Duration: " + String.valueOf(eventDuration) + " Hours");
         }
         else{
             eventDuration = eventDuration/86400;
-            durationTextView.setText("Duration:- " + String.valueOf(eventDuration.longValue()) + " Days");
+            durationTextView.setText("Duration: " + String.valueOf(eventDuration.longValue()) + " Days");
         }
 
         if(currentContest.getIn24Hours().equals("Yes")){
