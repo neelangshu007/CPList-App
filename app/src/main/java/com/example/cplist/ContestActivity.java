@@ -10,12 +10,17 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -29,7 +34,7 @@ public class ContestActivity extends AppCompatActivity implements LoaderManager.
 
     private static final String LOG_TAG = ContestActivity.class.getName();
 
-    private final String CONTEST_REQUEST_URL = "https://kontests.net/api/v1/codeforces";
+    private final String CONTEST_REQUEST_URL = "https://kontests.net/api/v1";
 
     private ContestAdapter adapter;
 
@@ -124,7 +129,19 @@ public class ContestActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public Loader<List<Contest>> onCreateLoader(int i, Bundle bundle) {
-        return new ContestLoader(this, CONTEST_REQUEST_URL);
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
+
+        Uri baseUri = Uri.parse(CONTEST_REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter("",orderBy);
+
+        return new ContestLoader(this, uriBuilder.toString());
     }
 
 
@@ -174,7 +191,21 @@ public class ContestActivity extends AppCompatActivity implements LoaderManager.
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

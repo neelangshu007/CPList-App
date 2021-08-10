@@ -29,6 +29,7 @@ public final class QueryUtils {
     private static URL createUrl(String StringUrl){
         URL url = null;
         try{
+           StringUrl =  StringUrl.replace("?=","/");
             url = new URL(StringUrl);
         }catch (MalformedURLException e){
             Log.e(LOG_TAG, "Problem building the URL", e);
@@ -59,7 +60,7 @@ public final class QueryUtils {
                 Log.e(LOG_TAG, "Error Response Code: " + urlConnection.getResponseCode());
             }
         }catch (IOException e){
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the Contest JSON results.", e);
         }finally {
             if(urlConnection != null){
                 urlConnection.disconnect();
@@ -128,7 +129,8 @@ public final class QueryUtils {
         String jsonResponse = null;
         try{
             jsonResponse = makeHttpRequest(url);
-            Log.e(LOG_TAG, "NEEL JSON RESPONSE: "+jsonResponse);
+            Log.e(LOG_TAG, "URL: "+url);
+            Log.e(LOG_TAG, "JSON RESPONSE: "+jsonResponse);
 
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);

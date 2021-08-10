@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">CPList</string>
+
+    <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
+    <string name="settings_menu_item">Settings</string>
+    <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
+    <string name="settings_title">Contest Settings</string>
+
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Sites</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_codechef_value</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_codechef_label">Codechef</string>
+    <string name="settings_order_by_codechef_value" translatable="false">code_chef</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_codeforces_label">Codeforces</string>
+    <string name="settings_order_by_codeforces_value" translatable="false">codeforces</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_leetcode_label">LeetCode</string>
+    <string name="settings_order_by_leetcode_value" translatable="false">leet_code</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_hackerearth_label">HackerEarth</string>
+    <string name="settings_order_by_hackerearth_value" translatable="false">hacker_earth</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_topcoder_label">TopCoder</string>
+    <string name="settings_order_by_topcoder_value" translatable="false">top_coder</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_atcoder_label">AtCoder</string>
+    <string name="settings_order_by_atcoder_value" translatable="false">at_coder</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_hackerrank_label">HackerRank</string>
+    <string name="settings_order_by_hackerrank_value" translatable="false">hacker_rank</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_csacademy_label">CS Academy</string>
+    <string name="settings_order_by_csacademy_value" translatable="false">cs_academy</string>
+
 </resources>

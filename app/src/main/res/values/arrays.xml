@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="settings_order_by_labels">
+            <item>@string/settings_order_by_codechef_label</item>
+            <item>@string/settings_order_by_codeforces_label</item>
+            <item>@string/settings_order_by_leetcode_label</item>
+            <item>@string/settings_order_by_hackerearth_label</item>
+            <item>@string/settings_order_by_topcoder_label</item>
+            <item>@string/settings_order_by_atcoder_label</item>
+            <item>@string/settings_order_by_hackerrank_label</item>
+            <item>@string/settings_order_by_csacademy_label</item>
+        </string-array>
+
+        <string-array name="settings_order_by_values">
+            <item>@string/settings_order_by_codechef_value</item>
+            <item>@string/settings_order_by_codeforces_value</item>
+            <item>@string/settings_order_by_leetcode_value</item>
+            <item>@string/settings_order_by_hackerearth_value</item>
+            <item>@string/settings_order_by_topcoder_value</item>
+            <item>@string/settings_order_by_atcoder_value</item>
+            <item>@string/settings_order_by_hackerrank_value</item>
+            <item>@string/settings_order_by_csacademy_value</item>
+        </string-array>
+
+</resources>
