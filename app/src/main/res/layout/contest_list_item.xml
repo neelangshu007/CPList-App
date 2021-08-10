@@ -13,7 +13,7 @@
         android:padding="10dp"
         android:layout_margin="7dp"
         app:cardCornerRadius="10dp"
-        android:elevation="5dp"
+        android:elevation="7dp"
         app:cardBackgroundColor="@color/teal_200">
 
         <LinearLayout
@@ -29,7 +29,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textColor="@color/black"
-                android:text="Event"
+                tools:text="Event"
                 android:textSize="17sp"
                 android:textStyle="bold">
             </TextView>
@@ -41,15 +41,16 @@
 
                 <TextView
                     android:id="@+id/startTime"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginTop="2dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:padding="5dp"
                     android:textSize="15sp"
                     android:textColor="@color/black"
-                    android:text="Start time">
+                    tools:text="Start time">
                 </TextView>
 
                 <TextView
@@ -64,7 +65,7 @@
                     android:textColor="@color/white"
                     android:textAlignment="viewEnd"
                     android:visibility="invisible"
-                    android:text="In 24 Hours">
+                    tools:text="In 24 Hours">
                 </TextView>
 
             </LinearLayout>
@@ -79,7 +80,7 @@
                 android:padding="5dp"
                 android:textSize="15sp"
                 android:textColor="@color/black"
-                android:text="End time">
+                tools:text="End time">
             </TextView>
 
             <TextView
@@ -92,7 +93,7 @@
                 android:padding="5dp"
                 android:textSize="15sp"
                 android:textColor="@color/black"
-                android:text="Duration">
+                tools:text="Duration">
             </TextView>
 
         </LinearLayout>

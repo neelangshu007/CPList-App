@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/purple_200"
+        android:textColor="@color/black"
         tools:text="No Internet Connection" />
 
     <ProgressBar
