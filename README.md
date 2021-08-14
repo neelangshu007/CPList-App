@@ -1,8 +1,8 @@
 # CPList-App
 This app displays a list of recent/ongoing/future Competitive Coding Contest in the world for eg(Codeforces, Codechef, Topcoder etc).
-from the kontests.net REST API.
+from the kontests.net .
 
-More info on the kontests.net API available at:
+More info on the kontests.net REST API available at:
 https://kontests.net/api
 
 
