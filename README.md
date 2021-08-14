@@ -5,6 +5,9 @@ from the kontests.net .
 More info on the kontests.net REST API available at:
 https://kontests.net/api
 
+## Feature
+* Swipe Down to Refresh the Page and get new updated contest
+
 
 ## Pre-requisites
 - Android SDK v23
