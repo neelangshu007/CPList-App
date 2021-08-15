@@ -77,11 +77,16 @@ public class ContestAdapter extends ArrayAdapter<Contest> {
             durationTextView.setText("Duration: " + String.valueOf(eventDuration.longValue()) + " Days");
         }
 
+
+        TextView in24Hours = listItemView.findViewById(R.id.in24Hours);
+        CardView contestCardView = listItemView.findViewById(R.id.cardView);
+
         if(currentContest.getIn24Hours().equals("Yes")){
-            TextView in24Hours = listItemView.findViewById(R.id.in24Hours);
-            CardView contestCardView = listItemView.findViewById(R.id.cardView);
             contestCardView.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.red));
             in24Hours.setVisibility(View.VISIBLE);
+        }
+        else{
+            contestCardView.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.teal_200));
         }
 
 
